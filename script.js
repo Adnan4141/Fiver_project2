@@ -56,7 +56,8 @@ $(document).ready(function () {
   
         function navigate(direction) {
             currentIndex = (currentIndex + direction + navItems.length) % navItems.length;
-           overview_containers.hide().removeClass("show-container")
+          console.log(currentIndex)
+            overview_containers.hide().removeClass("show-container")
            overview_containers.eq(currentIndex).addClass('show-container').show();
             console.log($(".overview").eq(0).attr("class"))
             updateSelection();
@@ -96,8 +97,6 @@ $(document).ready(function () {
     // bottom scroll
     $(".bottom-slider-arrow").click(function() {
         const navItems = $('.slider-dot');
-        const navItems2 = $('.nav-item');
-        let contentElement = $('#overview-header');
         let currentIndex = navItems.index(navItems.filter('.active'));
         console.log(currentIndex)
         
@@ -105,12 +104,17 @@ $(document).ready(function () {
             navItems.each(function(index, item) {
                 $(item).toggleClass('active', index === currentIndex);
             });
-            contentElement.text(navItems2.eq(currentIndex).data('content'));
+          
         }
     
         function navigate(direction) {
             currentIndex = (currentIndex + direction + navItems.length) % navItems.length;
+            console.log(currentIndex)
+            overview_containers.hide().removeClass("show-container")
+           overview_containers.eq(currentIndex).addClass('show-container').show();
+            console.log($(".overview").eq(0).attr("class"))
             updateSelection();
+           
         }
     
         if (this.id === "bottom-left") {
